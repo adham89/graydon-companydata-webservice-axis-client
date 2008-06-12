@@ -20,7 +20,10 @@ import uk.co.graydon.ws.GraydonDataService.types.*;
  * 
  * Operation : GetCompanyMatchesByName
  * 
- * 
+ * Argument0 = Partner Userid
+ * Argument1 = Partner Password
+ * Argument2 = Country
+ * Argument3 = Name to Match
  */
 public class MatchCompanyByName {
 	
@@ -32,8 +35,26 @@ public class MatchCompanyByName {
 		
 		try
 		{
+			String partnerUserid	= null;
+			String partnerPassword	= null;
+			String matchCountry		= null;	
+			String matchName 		= null;
+			
 			// set defaults
 			SIMPLE_DATE.setTimeZone(GMT);
+			
+			// retrieve arguments
+			if (args.length == 0)
+				throw new Exception("Invalid arguments: Please specify match arguments");
+			
+			// populate match parameters with arguments
+			partnerUserid 	= args[0].trim();
+			partnerPassword = args[1].trim();
+			matchCountry 	= args[2].trim();
+			matchName 		= args[3].trim();
+			
+			if (partnerUserid == null || partnerPassword == null || matchCountry == null || matchName == null)
+				throw new Exception("Invalid arguments: Please specify match arguments");
 			
 			// create an instance of the graydon webservice proxy
 			GraydonCompanyData_BindingStub 	binding	= (GraydonCompanyData_BindingStub) new GraydonCompanyDataLocator().getSOAPPort();
@@ -45,18 +66,19 @@ public class MatchCompanyByName {
 			Authentication_ParametersType authentication_parameters	= new Authentication_ParametersType();
 			
 			// set the partner userid and password
-			authentication_parameters.setPartnerUserId("GGWDEMO4");
-			authentication_parameters.setPartnerPassword("MRF1xIT");
+			authentication_parameters.setPartnerUserId(partnerUserid);
+			authentication_parameters.setPartnerPassword(partnerPassword);
 			
 			// set the generic match parameters
 			CompanyMatches_ParametersType companyMatches_Parameters = new CompanyMatches_ParametersType();
-			companyMatches_Parameters.setCountry("United Kingdom");
+			companyMatches_Parameters.setCountry(matchCountry);
 			
 			// create an instance of the getCompanyMatchesByName parameters
 			GetCompanyMatchesByName_ParametersType  getCompanyMatchesByName_Parameters = new GetCompanyMatchesByName_ParametersType();
-			getCompanyMatchesByName_Parameters.setName("Kentstone Properties");							// set the identifier to match with
+			getCompanyMatchesByName_Parameters.setName(matchName);							// set the identifier to match with
 			getCompanyMatchesByName_Parameters.setAuthentication_Parameters(authentication_parameters);	// set the authentication parameters
 			getCompanyMatchesByName_Parameters.setCompanyMatches_Parameters(companyMatches_Parameters);
+			
 			// perform the 'getCompanyMatchesByIndentifier' operation
 			try
 			{
@@ -131,12 +153,15 @@ public class MatchCompanyByName {
 							System.out.println("Fax\t\t\t: " + company[x].getFacsimile());											// output the fax address
 							
 						// get the returned company identifiers for the company
-						ActivityType activities[] = company[x].getActivites(); 
-						for (int y = 0; y < activities.length; y++)
+						if (company[x].getActivites() != null)
 						{
-							System.out.println("Activities :");																	
-							System.out.println("  Type\t\t\t: " + activities[y].getType());											// output activity type
-							System.out.println("  Description\t\t: " + activities[y].getDescription());								// output acitivity description
+							ActivityType activities[] = company[x].getActivites(); 
+							for (int y = 0; y < activities.length; y++)
+							{
+								System.out.println("Activities :");																	
+								System.out.println("  Type\t\t\t: " + activities[y].getType());											// output activity type
+								System.out.println("  Description\t\t: " + activities[y].getDescription());								// output acitivity description
+							}
 						}
 						
 						System.out.println(" ");
