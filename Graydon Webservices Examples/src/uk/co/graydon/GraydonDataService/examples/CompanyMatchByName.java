@@ -18,15 +18,14 @@ import uk.co.graydon.ws.GraydonDataService.types.*;
  *
  * Runnable axis 1.3 java client for Graydon Company Data Webservice
  * 
- * Operation : GetCompanyMatchesByKeyword
+ * Operation : GetCompanyMatchesByName
  * 
- *  
  * Argument0 = Partner Userid
  * Argument1 = Partner Password
  * Argument2 = Country
- * Argument3 = Keyword to Match
+ * Argument3 = Name to Match
  */
-public class MatchCompanyByKeyword {
+public class CompanyMatchByName {
 	
 	private static SimpleDateFormat 	SIMPLE_DATE 				= new SimpleDateFormat("dd/MM/yyyy");
 	private static TimeZone 			GMT 						= TimeZone.getTimeZone("GMT");
@@ -39,7 +38,7 @@ public class MatchCompanyByKeyword {
 			String partnerUserid	= null;
 			String partnerPassword	= null;
 			String matchCountry		= null;	
-			String matchIdentifier 	= null;
+			String matchName 		= null;
 			
 			// set defaults
 			SIMPLE_DATE.setTimeZone(GMT);
@@ -52,9 +51,9 @@ public class MatchCompanyByKeyword {
 			partnerUserid 	= args[0].trim();
 			partnerPassword = args[1].trim();
 			matchCountry 	= args[2].trim();
-			matchIdentifier = args[3].trim();
+			matchName 		= args[3].trim();
 			
-			if (partnerUserid == null || partnerPassword == null || matchCountry == null || matchIdentifier == null)
+			if (partnerUserid == null || partnerPassword == null || matchCountry == null || matchName == null)
 				throw new Exception("Invalid arguments: Please specify match arguments");
 			
 			// create an instance of the graydon webservice proxy
@@ -75,15 +74,15 @@ public class MatchCompanyByKeyword {
 			companyMatches_Parameters.setCountry(matchCountry);
 			
 			// create an instance of the getCompanyMatchesByName parameters
-			GetCompanyMatchesByIdentifier_ParametersType  getCompanyMatchesByIdentifier_Parameters = new GetCompanyMatchesByIdentifier_ParametersType();
-			getCompanyMatchesByIdentifier_Parameters.setIdentifier(matchIdentifier);							// set the identifier to match with
-			getCompanyMatchesByIdentifier_Parameters.setAuthentication_Parameters(authentication_parameters);	// set the authentication parameters
-			getCompanyMatchesByIdentifier_Parameters.setCompanyMatches_Parameters(companyMatches_Parameters);
+			GetCompanyMatchesByName_ParametersType  getCompanyMatchesByName_Parameters = new GetCompanyMatchesByName_ParametersType();
+			getCompanyMatchesByName_Parameters.setName(matchName);										// set the name to match with
+			getCompanyMatchesByName_Parameters.setAuthentication_Parameters(authentication_parameters);	// set the authentication parameters
+			getCompanyMatchesByName_Parameters.setCompanyMatches_Parameters(companyMatches_Parameters);
 			
-			// perform the 'getCompanyMatchesByIdentifier' operation
+			// perform the 'getCompanyMatchesByName' operation
 			try
 			{
-				GetCompanyMatches_ResultType getCompanyMatches_Result = binding.getCompanyMatchesByIdentifier(getCompanyMatchesByIdentifier_Parameters);
+				GetCompanyMatches_ResultType getCompanyMatches_Result = binding.getCompanyMatchesByName(getCompanyMatchesByName_Parameters);
 				
 				// check if matches have been populated
 				if (getCompanyMatches_Result.getCompanyMatches() != null)
@@ -152,7 +151,9 @@ public class MatchCompanyByKeyword {
 							System.out.println("Email\t\t\t: " + company[x].getEmail());											// output the email address
 						if (company[x].getFacsimile() != null)
 							System.out.println("Fax\t\t\t: " + company[x].getFacsimile());											// output the fax address
-							
+						if (company[x].getCompanyMatchIdentifier() != null)
+							System.out.println("Company Match Identifier: " + company[x].getCompanyMatchIdentifier());				// output the company match identifier
+						
 						// get the returned company identifiers for the company
 						if (company[x].getActivites() != null)
 						{
@@ -160,8 +161,8 @@ public class MatchCompanyByKeyword {
 							for (int y = 0; y < activities.length; y++)
 							{
 								System.out.println("Activities :");																	
-								System.out.println("  Type\t\t\t: " + activities[y].getType());											// output activity type
-								System.out.println("  Description\t\t: " + activities[y].getDescription());								// output acitivity description
+								System.out.println("  Type\t\t\t: " + activities[y].getType());										// output activity type
+								System.out.println("  Description\t\t: " + activities[y].getDescription());							// output acitivity description
 							}
 						}
 						
