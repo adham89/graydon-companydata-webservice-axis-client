@@ -18,14 +18,16 @@ import uk.co.graydon.ws.GraydonDataService.types.*;
  *
  * Runnable axis 1.3 java client for Graydon Company Data Webservice
  * 
- * Operation : GetCompanyMatchesByName
+ * Operation : GetCompanyMatchesByKeyword
  * 
+ *  
  * Argument0 = Partner Userid
  * Argument1 = Partner Password
  * Argument2 = Country
- * Argument3 = Name to Match
+ * Argument3 = Keyword to Match
+ * Argument4 = City to Match
  */
-public class MatchCompanyByName {
+public class CompanyMatchByKeyword {
 	
 	private static SimpleDateFormat 	SIMPLE_DATE 				= new SimpleDateFormat("dd/MM/yyyy");
 	private static TimeZone 			GMT 						= TimeZone.getTimeZone("GMT");
@@ -38,7 +40,8 @@ public class MatchCompanyByName {
 			String partnerUserid	= null;
 			String partnerPassword	= null;
 			String matchCountry		= null;	
-			String matchName 		= null;
+			String matchKeyword 	= null;
+			String matchCity 		= null;
 			
 			// set defaults
 			SIMPLE_DATE.setTimeZone(GMT);
@@ -51,9 +54,10 @@ public class MatchCompanyByName {
 			partnerUserid 	= args[0].trim();
 			partnerPassword = args[1].trim();
 			matchCountry 	= args[2].trim();
-			matchName 		= args[3].trim();
+			matchKeyword	= args[3].trim();
+			matchCity		= args[4].trim();
 			
-			if (partnerUserid == null || partnerPassword == null || matchCountry == null || matchName == null)
+			if (partnerUserid == null || partnerPassword == null || matchCountry == null || matchKeyword == null)
 				throw new Exception("Invalid arguments: Please specify match arguments");
 			
 			// create an instance of the graydon webservice proxy
@@ -73,16 +77,21 @@ public class MatchCompanyByName {
 			CompanyMatches_ParametersType companyMatches_Parameters = new CompanyMatches_ParametersType();
 			companyMatches_Parameters.setCountry(matchCountry);
 			
-			// create an instance of the getCompanyMatchesByName parameters
-			GetCompanyMatchesByName_ParametersType  getCompanyMatchesByName_Parameters = new GetCompanyMatchesByName_ParametersType();
-			getCompanyMatchesByName_Parameters.setName(matchName);							// set the identifier to match with
-			getCompanyMatchesByName_Parameters.setAuthentication_Parameters(authentication_parameters);	// set the authentication parameters
-			getCompanyMatchesByName_Parameters.setCompanyMatches_Parameters(companyMatches_Parameters);
+			// create an instance of the getCompanyMatchesByKeyword parameters
+			GetCompanyMatchesByKeyword_ParametersType  getCompanyMatchesByKeyword_Parameters = new GetCompanyMatchesByKeyword_ParametersType();
+			getCompanyMatchesByKeyword_Parameters.setKeyword(matchKeyword);									// set the keyword to match with
+			getCompanyMatchesByKeyword_Parameters.setCity(matchCity);										// set the city to match with
+			getCompanyMatchesByKeyword_Parameters.setAuthentication_Parameters(authentication_parameters);	// set the authentication parameters
+			getCompanyMatchesByKeyword_Parameters.setCompanyMatches_Parameters(companyMatches_Parameters);
 			
-			// perform the 'getCompanyMatchesByIndentifier' operation
+			// perform the 'getCompanyMatchesByKeyword' operation
 			try
 			{
-				GetCompanyMatches_ResultType getCompanyMatches_Result = binding.getCompanyMatchesByName(getCompanyMatchesByName_Parameters);
+				GetCompanyMatches_ResultType getCompanyMatches_Result = binding.getCompanyMatchesByKeyword(getCompanyMatchesByKeyword_Parameters);
+				
+				// output service log details
+				if (getCompanyMatches_Result.getService_Log() != null) 
+					serviceLog(getCompanyMatches_Result.getService_Log());
 				
 				// check if matches have been populated
 				if (getCompanyMatches_Result.getCompanyMatches() != null)
@@ -151,6 +160,8 @@ public class MatchCompanyByName {
 							System.out.println("Email\t\t\t: " + company[x].getEmail());											// output the email address
 						if (company[x].getFacsimile() != null)
 							System.out.println("Fax\t\t\t: " + company[x].getFacsimile());											// output the fax address
+						if (company[x].getCompanyMatchIdentifier() != null)
+							System.out.println("Company Match Identifier: " + company[x].getCompanyMatchIdentifier());			// output the company match identifier
 							
 						// get the returned company identifiers for the company
 						if (company[x].getActivites() != null)
@@ -185,5 +196,22 @@ public class MatchCompanyByName {
 		{
 			System.err.println("Exception : " + e);
 		}
+	}
+	
+	/**
+	* Service log output
+	*
+	*/
+	private static void serviceLog(Service_LogType service_Log)
+	{
+		System.out.println("Service_Log :");																	
+		System.out.println("  PartnerUserId\t\t\t: " + service_Log.getPartnerUserId());												// output partner userid
+		System.out.println("  SessionId\t\t: " + service_Log.getSessionID());														// output sessionId
+		System.out.println("  Transaction Identifier\t: " + service_Log.getTransactionIdentifier());								// output transaction identifier
+		System.out.println("  Request Date\t\t: " + SIMPLE_DATE.format(service_Log.getRequestTimestamp().getDate()));				// output request date
+		System.out.println("  Request Time\t\t: " + service_Log.getRequestTimestamp().getTime());									// output request time
+		System.out.println("  Response Date\t\t: " + SIMPLE_DATE.format(service_Log.getResponseTimestamp().getDate()));				// output response date
+		System.out.println("  Response Time\t\t: " + service_Log.getResponseTimestamp().getTime());									// output response time
+		System.out.println(" ");
 	}
 }

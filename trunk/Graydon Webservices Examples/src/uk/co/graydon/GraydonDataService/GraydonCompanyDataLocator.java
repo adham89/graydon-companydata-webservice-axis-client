@@ -28,6 +28,8 @@ public class GraydonCompanyDataLocator extends org.apache.axis.client.Service im
 
     // Use to get a proxy class for SOAPPort
     private java.lang.String SOAPPort_address = "https://www.webservices.graydon.co.uk:443/CompanyData_webservice/services/SOAPPort";
+    //private java.lang.String SOAPPort_address = "http://test.webservices.graydon.co.uk/CompanyData_webservice/services/SOAPPort";
+    //private java.lang.String SOAPPort_address = "http://localhost:9080/CompanyData_webservice/services/SOAPPort";
 
     public java.lang.String getSOAPPortAddress() {
         return SOAPPort_address;
