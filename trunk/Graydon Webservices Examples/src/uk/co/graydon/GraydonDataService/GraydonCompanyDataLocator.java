@@ -77,7 +77,8 @@ public class GraydonCompanyDataLocator extends org.apache.axis.client.Service im
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    @Override
+	public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (uk.co.graydon.GraydonDataService.GraydonCompanyData_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
                 uk.co.graydon.GraydonDataService.GraydonCompanyData_BindingStub _stub = new uk.co.graydon.GraydonDataService.GraydonCompanyData_BindingStub(new java.net.URL(SOAPPort_address), this);
@@ -96,7 +97,8 @@ public class GraydonCompanyDataLocator extends org.apache.axis.client.Service im
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    @Override
+	public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -111,13 +113,15 @@ public class GraydonCompanyDataLocator extends org.apache.axis.client.Service im
         }
     }
 
-    public javax.xml.namespace.QName getServiceName() {
+    @Override
+	public javax.xml.namespace.QName getServiceName() {
         return new javax.xml.namespace.QName("http://graydon.co.uk/GraydonDataService/", "GraydonCompanyData");
     }
 
     private java.util.HashSet ports = null;
 
-    public java.util.Iterator getPorts() {
+    @Override
+	public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
             ports.add(new javax.xml.namespace.QName("http://graydon.co.uk/GraydonDataService/", "SOAPPort"));

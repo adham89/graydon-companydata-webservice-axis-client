@@ -109,7 +109,8 @@ public class ActivityType  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof ActivityType)) return false;
         ActivityType other = (ActivityType) obj;
         if (obj == null) return false;
@@ -134,7 +135,8 @@ public class ActivityType  implements java.io.Serializable {
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

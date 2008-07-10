@@ -144,7 +144,8 @@ public class GetCompanyMatchesByName_ParametersType  implements java.io.Serializ
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCompanyMatchesByName_ParametersType)) return false;
         GetCompanyMatchesByName_ParametersType other = (GetCompanyMatchesByName_ParametersType) obj;
         if (obj == null) return false;
@@ -175,7 +176,8 @@ public class GetCompanyMatchesByName_ParametersType  implements java.io.Serializ
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

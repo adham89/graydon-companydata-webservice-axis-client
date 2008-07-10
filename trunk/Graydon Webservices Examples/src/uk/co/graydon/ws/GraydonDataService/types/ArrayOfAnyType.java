@@ -39,7 +39,8 @@ public class ArrayOfAnyType  implements java.io.Serializable, org.apache.axis.en
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof ArrayOfAnyType)) return false;
         ArrayOfAnyType other = (ArrayOfAnyType) obj;
         if (obj == null) return false;
@@ -58,7 +59,8 @@ public class ArrayOfAnyType  implements java.io.Serializable, org.apache.axis.en
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

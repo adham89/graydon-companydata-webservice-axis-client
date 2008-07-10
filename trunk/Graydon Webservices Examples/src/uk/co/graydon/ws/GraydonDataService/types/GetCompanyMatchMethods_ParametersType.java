@@ -74,7 +74,8 @@ public class GetCompanyMatchMethods_ParametersType  implements java.io.Serializa
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCompanyMatchMethods_ParametersType)) return false;
         GetCompanyMatchMethods_ParametersType other = (GetCompanyMatchMethods_ParametersType) obj;
         if (obj == null) return false;
@@ -96,7 +97,8 @@ public class GetCompanyMatchMethods_ParametersType  implements java.io.Serializa
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }
