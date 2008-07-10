@@ -3,18 +3,22 @@ How to run the examples within this project
 
 == Introduction ==
 
-Download the graydonCompanyDataWebservices_Examples.jar
-Download the latest version of Apache Axis http://ws.apache.org/axis/
+
 
 == Details ==
 
-*1.* Make sure the Apache Axis .jars and the graydonCompanyDataWebservices_Examples.jar are in your classpath.
+*1.* Requirements
+
+||Download the graydonCompanyDataWebservices_Examples.jar||
+||Download the latest version of Apache Axis [http://ws.apache.org/axis/]||
+
+*2.* Make sure the Apache Axis .jars and the graydonCompanyDataWebservices_Examples.jar are in your classpath.
 
 ||*set AXIS_LIB*=(Axis jars Path)||
 ||*set GRAYDON_LIB*=(Graydon Client jars Path)||
 ||*set CLASSPATH*=%AXIS_LIB%\axis.jar;%AXIS_LIB%\commons-discovery-0.2.jar;%AXIS_LIB%\commons-logging-1.0.4.jar;%AXIS_LIB%\jaxrpc.jar;%AXIS_LIB%\saaj.jar;%AXIS_LIB%\log4j-1.2.8.jar;%AXIS_LIB%\wsdl4j-1.5.1.jar;%GRAYDON_LIB%\graydonCompanyDataWebservices_Examples.jar||
 
-*2.* Go to a command line and run one of the examples _(Note: you may need to set the http.proxyHost and http.proxyPort system properties)_
+*3.* Go to a command line and run one of the examples _(Note: you may need to set the http.proxyHost and http.proxyPort system properties)_
 
 _examples_
 ||*java* uk.co.graydon.GraydonDataService.examples.CompanyMatchByName "<userId>" "<password>" "United Kingdom" "IBM"||
