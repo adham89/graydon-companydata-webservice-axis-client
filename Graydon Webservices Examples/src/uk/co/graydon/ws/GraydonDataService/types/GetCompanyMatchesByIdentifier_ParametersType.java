@@ -92,7 +92,8 @@ public class GetCompanyMatchesByIdentifier_ParametersType  implements java.io.Se
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCompanyMatchesByIdentifier_ParametersType)) return false;
         GetCompanyMatchesByIdentifier_ParametersType other = (GetCompanyMatchesByIdentifier_ParametersType) obj;
         if (obj == null) return false;
@@ -117,7 +118,8 @@ public class GetCompanyMatchesByIdentifier_ParametersType  implements java.io.Se
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

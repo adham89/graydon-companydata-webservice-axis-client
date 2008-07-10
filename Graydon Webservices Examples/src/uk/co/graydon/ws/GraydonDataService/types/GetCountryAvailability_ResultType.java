@@ -67,7 +67,8 @@ public class GetCountryAvailability_ResultType  implements java.io.Serializable 
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCountryAvailability_ResultType)) return false;
         GetCountryAvailability_ResultType other = (GetCountryAvailability_ResultType) obj;
         if (obj == null) return false;
@@ -89,7 +90,8 @@ public class GetCountryAvailability_ResultType  implements java.io.Serializable 
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

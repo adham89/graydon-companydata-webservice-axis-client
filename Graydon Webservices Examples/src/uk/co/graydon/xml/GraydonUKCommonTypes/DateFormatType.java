@@ -47,9 +47,12 @@ public class DateFormatType implements java.io.Serializable {
           throws java.lang.IllegalArgumentException {
         return fromValue(value);
     }
-    public boolean equals(java.lang.Object obj) {return (obj == this);}
-    public int hashCode() { return toString().hashCode();}
-    public java.lang.String toString() { return _value_;}
+    @Override
+	public boolean equals(java.lang.Object obj) {return (obj == this);}
+    @Override
+	public int hashCode() { return toString().hashCode();}
+    @Override
+	public java.lang.String toString() { return _value_;}
     public java.lang.Object readResolve() throws java.io.ObjectStreamException { return fromValue(_value_);}
     public static org.apache.axis.encoding.Serializer getSerializer(
            java.lang.String mechType, 

@@ -63,7 +63,8 @@ public class GetCountryStylesheets_ResultTypeCountryStylesheets  implements java
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCountryStylesheets_ResultTypeCountryStylesheets)) return false;
         GetCountryStylesheets_ResultTypeCountryStylesheets other = (GetCountryStylesheets_ResultTypeCountryStylesheets) obj;
         if (obj == null) return false;
@@ -85,7 +86,8 @@ public class GetCountryStylesheets_ResultTypeCountryStylesheets  implements java
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

@@ -39,7 +39,8 @@ public class GetCompanyReport_ResultTypeReportXML  implements java.io.Serializab
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCompanyReport_ResultTypeReportXML)) return false;
         GetCompanyReport_ResultTypeReportXML other = (GetCompanyReport_ResultTypeReportXML) obj;
         if (obj == null) return false;
@@ -58,7 +59,8 @@ public class GetCompanyReport_ResultTypeReportXML  implements java.io.Serializab
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }

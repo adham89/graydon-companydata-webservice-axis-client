@@ -75,7 +75,8 @@ public class GetCompanyMatchIdentifiers_ParametersType  implements java.io.Seria
     }
 
     private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
+    @Override
+	public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof GetCompanyMatchIdentifiers_ParametersType)) return false;
         GetCompanyMatchIdentifiers_ParametersType other = (GetCompanyMatchIdentifiers_ParametersType) obj;
         if (obj == null) return false;
@@ -97,7 +98,8 @@ public class GetCompanyMatchIdentifiers_ParametersType  implements java.io.Seria
     }
 
     private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
+    @Override
+	public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
         }
