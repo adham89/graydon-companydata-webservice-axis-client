@@ -2,12 +2,16 @@ How to run the examples within this project
 
 = Introduction =
 
-Add your content here.
-
+Download the graydonCompanyDataWebservices_Examples.jar
+Download the latest version of Apache Axis http://ws.apache.org/axis/
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+1. Make sure the Apache Axis .jars and the graydonCompanyDataWebservices_Examples.jar are in your classpath.
+
+set AXIS_LIB=(Axis jars Path)
+set GRAYDON_LIB=(Graydon Client jars Path)
+
+SET CLASSPATH=%AXIS_LIB%\axis.jar;%AXIS_LIB%\commons-discovery-0.2.jar;%AXIS_LIB%\commons-logging-1.0.4.jar;%AXIS_LIB%\jaxrpc.jar;%AXIS_LIB%\saaj.jar;%AXIS_LIB%\log4j-1.2.8.jar;%AXIS_LIB%\wsdl4j-1.5.1.jar;%GRAYDON_LIB%\graydonCompanyDataWebservices_Examples.jar
+
+2. Go to a command line
