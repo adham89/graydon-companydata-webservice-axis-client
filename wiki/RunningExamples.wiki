@@ -3,7 +3,7 @@ How to run the examples within this project
 
 == Introduction ==
 
-
+This document gives you brief instructions on how to run the java axis client classes provided in the graydonCompanyDataWebservices_Examples jar.
 
 == Details ==
 
