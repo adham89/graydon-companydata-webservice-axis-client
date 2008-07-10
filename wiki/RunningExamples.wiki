@@ -1,11 +1,11 @@
 How to run the examples within this project
 
-= Introduction =
+== Introduction ==
 
 Download the graydonCompanyDataWebservices_Examples.jar
 Download the latest version of Apache Axis http://ws.apache.org/axis/
 
-= Details =
+== Details ==
 
 1. Make sure the Apache Axis .jars and the graydonCompanyDataWebservices_Examples.jar are in your classpath.
 
@@ -15,4 +15,7 @@ Download the latest version of Apache Axis http://ws.apache.org/axis/
 
 2. Go to a command line and run one of the examples _(Note: you may need to set the http.proxyHost and http.proxyPort setting)_
 
-||java uk.co.graydon.GraydonDataService.examples.CompanyMatchByName "<userId>" "<password>" "United Kingdom" "IBM"||
+||*java* uk.co.graydon.GraydonDataService.examples.CompanyMatchByName "<userId>" "<password>" "United Kingdom" "IBM"||
+||*java* uk.co.graydon.GraydonDataService.examples.CompanyMatchByIdentifier "<userId>" "<password>" "United Kingdom" "01777777"||
+||*java* uk.co.graydon.GraydonDataService.examples.CompanyMatchByKeyword "<userId>" "<password>" "United Kingdom" "IBM" "London"||
+||*java* uk.co.graydon.GraydonDataService.examples.CompanyMatchByPostCode "<userId>" "<password>" "United Kingdom" "W5 1DB"||
