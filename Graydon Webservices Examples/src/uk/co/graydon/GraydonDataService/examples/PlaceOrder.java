@@ -97,8 +97,8 @@ public class PlaceOrder {
 					System.out.println("Order Status\t\t\t:");
 					System.out.println("  Order Reference\t\t: " + orderStatus.getOrderReference());								// output company name
 					System.out.println("  Order State\t\t\t: " + orderStatus.getOrderState());										// output order state
-					System.out.println("  Date Ordered\t\t\t: " + SIMPLE_DATE.format(orderStatus.getDateOrdered()));				// output date ordered
-					System.out.println("  Date Completed\t\t: " + SIMPLE_DATE.format(orderStatus.getDateCompleted()));				// output date completed
+					System.out.println("  Date Ordered\t\t\t: " + orderStatus.getDateOrdered());									// output date ordered
+					System.out.println("  Date Completed\t\t: " + orderStatus.getDateCompleted());									// output date completed
 					
 					// get some order details
 					if (orderStatus.getOrder()!= null)
